@@ -105,17 +105,15 @@ N''db2'' WITH
 --execute creation of AOAG
 exec sp_executesql @cmd
 
-
 --create sample database
 PRINT 'CREATING DATABASE'
 
-RESTORE DATABASE [AdventureWorks] 
-FROM  DISK = @backup_file 
-WITH  FILE = 1,  
-MOVE N'AdventureWorksLT2012_Data' TO N'/var/opt/mssql/data/AdventureWorksLT2012.mdf',  
-MOVE N'AdventureWorksLT2012_Log' TO N'/var/opt/mssql/data/AdventureWorksLT2012_log.ldf',  
+RESTORE DATABASE [AdventureWorks]
+FROM  DISK = @backup_file
+WITH  FILE = 1,
+MOVE N'AdventureWorksLT2012_Data' TO N'/var/opt/mssql/data/AdventureWorksLT2012.mdf',
+MOVE N'AdventureWorksLT2012_Log' TO N'/var/opt/mssql/data/AdventureWorksLT2012_log.ldf',
 NOUNLOAD,  REPLACE,  STATS = 5
-
 
 -- --change recovery model and take full backup for db to meet requirements of AOAG
 PRINT 'CHANGING DB RECOVERY MODEL'

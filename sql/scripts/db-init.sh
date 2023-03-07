@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/sh
 
 echo "#######    STARTED CONFIGURATION   #######"
 
@@ -48,7 +48,5 @@ echo "<#############>    running sql agent failover job"
     -P $SA_PASSWORD \
     -d master \
     -i "aoag_failover_job.sql"
-
-
 
 echo "#######     COMPLETED CONFIGURATION    #######"

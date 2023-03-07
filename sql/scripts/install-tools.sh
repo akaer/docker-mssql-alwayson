@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/sh
 
 if [ $1 = "True" ]; then
     # Update the list of packages

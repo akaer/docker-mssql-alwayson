@@ -4,7 +4,7 @@ x-service-environment: &common-variables
     HADR_PORT: 5022
     INIT_WAIT: 40
     ACCEPT_EULA: 'Y'
-    IS_AOAG_PRIMARY: False
+    IS_AOAG_PRIMARY: 'false'
     SA_PASSWORD: ${SA_PASSWORD}
     MASTER_KEY_PASSWORD: ${MASTER_KEY_PASSWORD}
     HADR_LOGIN_PASSWORD: ${HADR_LOGIN_PASSWORD}
@@ -17,13 +17,13 @@ services:
     db1:
         container_name: db1
         hostname: db1
-        build: 
-            context: .\sql
+        build:
+            context: ./sql
             args:
                 - INSTALL_TOOLS=${INSTALL_TOOLS}
         environment:
             <<: *common-variables
-            IS_AOAG_PRIMARY: True
+            IS_AOAG_PRIMARY: 'true'
             TCP_PORT: ${DB1_TCP_PORT}
             PARTNER_HOSTNAME: db2
         ports:
@@ -37,8 +37,8 @@ services:
     db2:
         container_name: db2
         hostname: db2
-        build: 
-            context: .\sql
+        build:
+            context: ./sql
             args:
                 - INSTALL_TOOLS=${INSTALL_TOOLS}
         environment:
@@ -60,3 +60,4 @@ volumes:
     mssql-server-backup:
 networks:
     sqlaoag:
+

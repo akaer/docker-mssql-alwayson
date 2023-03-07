@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/sh
 
 #Set the defaultbackupdir (needs to be done here after the volume from docker-compose has been mapped)
 #run db-init.sh script
